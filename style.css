@@ -18,10 +18,7 @@
 }
 
 /* TO DO 
-Fixed img-background when scrolling
 Hero animation
-Burger menu: pulses
-Menu slides in from the left when clicked, then slides out to the left, red cross on top right-hand corner to close
 Layout of "Check Out" part
 Fix font h2
 Icon cards should rise a little when hovering, with green bottom border
@@ -64,15 +61,15 @@ body {
   animation: pulse 1s infinite linear;
 }
 @keyframes pulse {
-    0% {
-        transform: scale(1);
-    }
-    50% {
-        transform: scale(1.2);
-    }
-    100% {
-        transform: scale(1);
-    }
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.2);
+  }
+  100% {
+    transform: scale(1);
+  }
 }
 
 .burger-icon {
@@ -179,9 +176,41 @@ img {
   display: block;
 }
 
+.about-image {
+  overflow: hidden;
+  position: relative;
+}
+
 #main-pic {
   border: 5px solid var(--primary-color);
+  transition: transform 0.5s ease;
+  max-width: 100%;
+  display: block;
 }
+/* Zoom sur image about + green overlay */
+#main-pic:hover {
+  transform: scale(1.05);
+}
+
+.about-image::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(103, 142, 62, 0.3);
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  pointer-events: none;
+  /* le pointer-events permet de ne pas empêcher les interactions avec l'image sous l'overlay */
+  border: 5px solid var(--primary-color);
+}
+
+.about-image:hover::after {
+  opacity: 1;
+}
+/*  */
 
 h1,
 h2,
@@ -232,7 +261,6 @@ a {
   color: var(--white);
   padding: 0.75rem 1.5rem;
   border: none;
-  /* border-radius: var(--radius); */
   cursor: pointer;
   font-size: 1rem;
   transition: var(--transition);
@@ -277,11 +305,12 @@ a {
   min-height: 100vh;
   background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
     url("/teastation/maquettes/tea-station/assets/image/main-bcg.jpeg")
-      center/cover no-repeat;
+      center/cover;
   display: flex;
   align-items: center;
   justify-content: center;
   text-align: center;
+  background-attachment: fixed;
 }
 
 .hero-content {
