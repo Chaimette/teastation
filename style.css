@@ -22,7 +22,6 @@ Hero animation
 Layout of "Check Out" part
 Fix font h2
 Icon cards should rise a little when hovering, with green bottom border
-About-img should have green filter when hovering, and img zoomed in
 Fix buttons colors
 Fix contact form (layout + background)
 Button outline
@@ -202,7 +201,7 @@ img {
   background-color: rgba(103, 142, 62, 0.3);
   opacity: 0;
   transition: opacity 0.5s ease;
-  pointer-events: none;
+  pointer-events:none ;
   /* le pointer-events permet de ne pas empêcher les interactions avec l'image sous l'overlay */
   border: 5px solid var(--primary-color);
 }
@@ -304,7 +303,7 @@ a {
 .hero {
   min-height: 100vh;
   background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
-    url("/teastation/maquettes/tea-station/assets/image/main-bcg.jpeg")
+    url("/maquettes/tea-station/assets/image/main-bcg.jpeg")
       center/cover;
   display: flex;
   align-items: center;
@@ -456,7 +455,10 @@ a {
 
 .info-item {
   display: flex;
-  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  padding-left: 5vw;
   margin-bottom: 1.5rem;
 }
 
@@ -464,6 +466,7 @@ a {
   color: var(--primary-color);
   font-size: 1.5rem;
   margin-right: 1rem;
+  margin-bottom: 10px;
 }
 
 .contact-form {
